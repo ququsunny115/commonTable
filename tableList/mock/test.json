@@ -1,0 +1,51 @@
+forms: {
+    input: [
+      {
+        type: "input",
+        label: "城市",
+        key: "city"
+      }
+    ],
+    select: [
+      {
+        label: "省份",
+        key: "province",
+        option: [
+          {
+            name: "陕西",
+            value: "shannxi"
+          }
+        ]
+      }
+    ],
+    date: [
+      {
+        label: "日期1",
+        key: "date1"
+      }
+    ],
+    datetime: [
+      {
+        label: "日期2",
+        key: "date2"
+      }
+    ],
+    datetimeFormat: [
+      {
+        label: "日期3",
+        key: "date3"
+      }
+    ],
+    daterange: [
+      {
+        label: "日期范围1",
+        key: "daterange1"
+      }
+    ],
+    datetimerange: [
+      {
+        label: "日期范围2",
+        key: "daterange2"
+      }
+    ]
+  }

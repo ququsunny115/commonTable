@@ -15,6 +15,16 @@ export default new Router({
       path: '/list',
       name: 'list',
       component: () => import('@/views/list')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/views/searchContainer')
+    },
+    {
+      path: '/searchAndTable',
+      name: 'searchAndTable',
+      component: () => import('@/views/searchAndTable')
     }
   ]
 })

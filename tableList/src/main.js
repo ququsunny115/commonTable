@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import iViews from 'iview'
+import './assets/css/common.css'
 import 'iview/dist/styles/iview.css'
 
 Vue.use(iViews)

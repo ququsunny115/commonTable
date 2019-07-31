@@ -54,7 +54,7 @@ export default{
   },
   methods: {
     handleClick (method) {
-      this.$emit(method)
+      this.$parent[method]()
     },
     dropdown () {
       this.formData = this.formOption.form

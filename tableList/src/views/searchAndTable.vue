@@ -79,10 +79,10 @@ export default {
     }
   },
   mounted () {
-    this.formOption.button.forEach(item => {
-      console.log(item.method)
-      this.$refs.search.$on(item.method, this.item.method())
-    })
+    // this.formOption.button.forEach(item => {
+    //   console.log(item.method)
+    //   this.$refs.search.$on(item.method, this.item.method())
+    // })
   },
   methods: {
     handleSearch () {

@@ -1,5 +1,5 @@
 <template>
-  <search :formOption="formOption"></search>
+  <search :formOption="formOption" ref="search"></search>
 </template>
 
 <script>
@@ -11,6 +11,7 @@ export default {
   data () {
     return {
       formOption: {
+        hasTable: false,
         form: [
           {
             type: 'input',
@@ -58,25 +59,41 @@ export default {
           {
             name: '搜索',
             key: 'search',
-            type: 'info'
+            type: 'info',
+            method: 'handleSearch'
           },
           {
             name: '新建',
             key: 'add',
-            type: 'primary'
+            type: 'primary',
+            method: 'handleAdd'
           },
           {
             name: '重置',
             key: 'reset',
-            type: 'success'
+            type: 'success',
+            method: 'handleReset'
           }
         ]
       }
+    }
+  },
+  mounted () {
+    this.formOption.button.forEach(item => {
+      console.log(item.method)
+      this.$refs.search.$on(item.method, this.item.method())
+    })
+  },
+  methods: {
+    handleSearch () {
+      console.log(111)
+    },
+    handleAdd () {
+      console.log(222)
     }
   }
 }
 </script>
 
 <style scoped>
-
 </style>

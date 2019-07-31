@@ -19,6 +19,7 @@ export default{
   data () {
     return {
       formOption: {
+        hasTable: true,
         form: [
           {
             type: 'input',
@@ -251,15 +252,13 @@ export default{
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      console.log(document.body.clientHeight)
-      console.log(this.$refs.form.$el.offsetHeight, this.$refs.pagination.offsetHeight)
-    })
     this.getTableHeight()
   },
   methods: {
     getTableHeight () {
-      this.tableHeight = document.body.clientHeight - this.$refs.form.$el.offsetHeight - this.$refs.pagination.offsetHeight - 130
+      this.$nextTick(() => {
+        this.tableHeight = document.documentElement.clientHeight - this.$refs.form.$el.offsetHeight - this.$refs.pagination.offsetHeight - 50
+      })
     }
   }
 }

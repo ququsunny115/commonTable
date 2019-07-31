@@ -16,12 +16,14 @@ export default {
           {
             type: 'input',
             label: '城市',
-            key: 'city'
+            key: 'city',
+            value: ''
           },
           {
             type: 'select',
             label: '省份',
             key: 'province',
+            value: '',
             option: [
               {
                 name: '陕西',
@@ -32,27 +34,32 @@ export default {
           {
             type: 'date',
             label: '日期1',
-            key: 'date1'
+            key: 'date1',
+            value: ''
           },
           {
             type: 'datetime',
             label: '日期2',
-            key: 'date2'
+            key: 'date2',
+            value: ''
           },
           {
             type: 'datetimeFormat',
             label: '日期3',
-            key: 'date3'
+            key: 'date3',
+            value: ''
           },
           {
             type: 'daterange',
             label: '日期范围1',
-            key: 'daterange1'
+            key: 'daterange1',
+            value: ''
           },
           {
             type: 'datetimerange',
             label: '日期范围2',
-            key: 'daterange2'
+            key: 'daterange2',
+            value: ''
           }
         ],
         button: [
@@ -75,21 +82,19 @@ export default {
             method: 'handleReset'
           }
         ]
-      }
+      },
+      formModel: {}
     }
-  },
-  mounted () {
-    // this.formOption.button.forEach(item => {
-    //   console.log(item.method)
-    //   this.$refs.search.$on(item.method, this.item.method())
-    // })
   },
   methods: {
     handleSearch () {
-      console.log(111)
+      this.formModel = this.$refs.search.getFormvalue()
     },
     handleAdd () {
       console.log(222)
+    },
+    handleReset () {
+      this.$refs.search.resetFormValue()
     }
   }
 }

@@ -46,15 +46,26 @@ export default{
   created () {
     this.formData = this.formOption.form
     this.formData.forEach(item => {
-      this.formModel[item.key] = ''
+      this.formModel[item.key] = item.value
     })
     this.buttonArray = this.formOption.button
     this.isHide = this.formOption.form.length >= 3
     this.dropup()
   },
   methods: {
-    handleClick (method) {
-      this.$parent[method]()
+    handleClick (method) { // 触发method定义方法
+      if (this.$parent[method]) {
+        this.$parent[method]()
+      }
+    },
+    getFormvalue () { // 返回搜索框的所有值，类型为object
+      return this.formModel
+    },
+    resetFormValue () { // 重置搜索框
+      this.formData.forEach(item => {
+        this.formModel[item.key] = ''
+      })
+      return this.formModel
     },
     dropdown () {
       this.formData = this.formOption.form

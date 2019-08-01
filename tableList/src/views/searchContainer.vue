@@ -1,17 +1,17 @@
 <template>
  <div class="filter-container">
   <Row>
-    <Col :xs="20" :md="12" :lg="8" v-for="(item) in formData" :key="item.key">
+    <Col :xs="20" :md="12" :lg="8" v-for="item in formData" :key="item.key">
       <span>{{ item.label }}：</span>
-      <Input v-model="formModel[item.key]" :placeholder="'请输入'+item.label" class="filter-item" v-if="item.type === 'input'" />
-      <Select v-model="formModel[item.key]" class="filter-item" v-if="item.type === 'select'">
+      <Input v-model="item.value" :placeholder="'请输入'+item.label" class="filter-item" v-if="item.type === 'input'" />
+      <Select v-model="item.value" class="filter-item" v-if="item.type === 'select'">
         <Option v-for="option in item.option" :key="option.value" :value="option.value">{{ option.name }}</Option>
       </Select>
-      <DatePicker v-model="formModel[item.key]" type="date" class="filter-item" v-if="item.type === 'date'"></DatePicker>
-      <DatePicker v-model="formModel[item.key]" type="datetime" class="filter-item" v-if="item.type === 'datetime'"></DatePicker>
-      <DatePicker v-model="formModel[item.key]" type="datetime" format="yyyy-MM-dd HH:mm" class="filter-item" v-if="item.type === 'datetimeFormat'"></DatePicker>
-      <DatePicker v-model="formModel[item.key]" type="daterange" class="filter-item" v-if="item.type === 'daterange'"></DatePicker>
-      <DatePicker v-model="formModel[item.key]" type="datetimerange"  class="filter-item" v-if="item.type === 'datetimerange'"></DatePicker>
+      <DatePicker v-model="item.value" type="date" class="filter-item" v-if="item.type === 'date'"></DatePicker>
+      <DatePicker v-model="item.value" type="datetime" class="filter-item" v-if="item.type === 'datetime'"></DatePicker>
+      <DatePicker v-model="item.value" type="datetime" format="yyyy-MM-dd HH:mm" class="filter-item" v-if="item.type === 'datetimeFormat'"></DatePicker>
+      <DatePicker v-model="item.value" type="daterange" class="filter-item" v-if="item.type === 'daterange'"></DatePicker>
+      <DatePicker v-model="item.value" type="datetimerange"  class="filter-item" v-if="item.type === 'datetimerange'"></DatePicker>
     </Col>
     <Col :xs="20" :md="12" :lg="8" v-if="!isHide">
       <div class="button-container" style="margin-top: 10px">
@@ -39,15 +39,11 @@ export default{
   data () {
     return {
       formData: [],
-      formModel: {},
       isHide: false
     }
   },
   created () {
     this.formData = this.formOption.form
-    this.formData.forEach(item => {
-      this.formModel[item.key] = item.value
-    })
     this.buttonArray = this.formOption.button
     this.isHide = this.formOption.form.length >= 3
     this.dropup()
@@ -56,16 +52,9 @@ export default{
     handleClick (method) { // 触发method定义方法
       if (this.$parent[method]) {
         this.$parent[method]()
+      } else if (this.$parent.$parent[method]) {
+        this.$parent.$parent[method]()
       }
-    },
-    getFormvalue () { // 返回搜索框的所有值，类型为object
-      return this.formModel
-    },
-    resetFormValue () { // 重置搜索框
-      this.formData.forEach(item => {
-        this.formModel[item.key] = ''
-      })
-      return this.formModel
     },
     dropdown () {
       this.formData = this.formOption.form

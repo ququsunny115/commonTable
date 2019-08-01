@@ -88,7 +88,10 @@ export default {
   },
   methods: {
     handleSearch () {
-      this.formModel = this.$refs.search.getFormvalue()
+      this.formOption.form.map(item => {
+        this.formModel[item.key] = item.value
+      })
+      console.log(this.formModel)
     },
     handleAdd () {
       console.log(222)

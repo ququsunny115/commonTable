@@ -7,24 +7,34 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/create',
-      name: 'create',
-      component: () => import('@/views/create')
+      path: '/testList',
+      name: 'testList',
+      component: () => import('@/views/testList')
+    },
+    {
+      path: '/testSearch',
+      name: 'testSearch',
+      component: () => import('@/views/testSearch')
+    },
+    {
+      path: '/testSearchList',
+      name: 'testSearchList',
+      component: () => import('@/views/testSearchList')
     },
     {
       path: '/list',
       name: 'list',
-      component: () => import('@/views/list')
+      component: () => import('@/views/searchListContainer')
     },
     {
-      path: '/search',
-      name: 'search',
+      path: '/searchContainer',
+      name: 'searchContainer',
       component: () => import('@/views/searchContainer')
     },
     {
-      path: '/searchAndTable',
-      name: 'searchAndTable',
-      component: () => import('@/views/searchAndTable')
+      path: '/listContainer',
+      name: 'listContainer',
+      component: () => import('@/views/listContainer')
     }
   ]
 })
